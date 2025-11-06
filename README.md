@@ -183,3 +183,41 @@ Buvo atliekamas kiekvienos strategijos tyrimas. Kiekviena strategija su vector a
 1000000 įrašų vidurkis (atliekant testavimą 10 kartų) vector konteineryje 0.0455 s, list - 0.029 s.
 
 Išvada: naudojant pirmos strategijos skaidymą list konteineris buvo apytiksliai 1.5 karto lėtesnis nei vector; naudojant antros strategijos rūšiavimą pranašesnis buvo taip pat vector konteineris, tačiau labai nežymiai - apie 15% kiekvienu atveju; naudojant trečios strategijos skaidymą rezultatai pasikeitė - buvo taikomi nauji algoritmai, kurie gerokai pagreitino procesą ir pranašumą įgijo list konteineris, kuris vidutiniškai buvo greitesnis du kartus nei vector.
+
+
+##V1.1 VERSIJA
+Programa nuo šiol yra realizuota su Class tipu, tačiau programos veikimo principas ir esmė nepasikeitusi. Atlikus pakeitimus buvo atlikti spartos analizės tyrimai su 100000 ir 1000000 įrašų studentų failais.
+Gauti rezultatai pateikiami lentelėse
+
+### Class su 100000 studentų
+
+| Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
+|:--------------|:----------:|-------:|
+| O1 | 1. 89 s| 0.0241 s|
+| O2 | 1.86 s|0.0231 s|
+| O3 | 1.84 s|0.0225 s|
+
+### Class su 1000000 studentų
+
+| Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
+|:--------------|:----------:|-------:|
+| O1 |22.9 s|0.2633 s|
+| O2 | 22.6 s| 0.2539 s|
+| O3 | 22.4 s|0.2517 s|
+
+### Struct su 100000 studentų
+
+| Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
+|:--------------|:----------:|-------:|
+| O1 |1.85 s| 0.235 s|
+| O2 |1.83 s| 0.221 s|
+| O3 |1.82 s| 0.2131 s|
+
+### Struct su 1000000 studentų
+
+| Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
+|:--------------|:----------:|-------:|
+| O1 | 23.4 s| 0.259 s|
+| O2 | 22.5 s| 0.2471 s|
+| O3 |22.2 s| 0.242 s|
+
