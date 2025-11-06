@@ -1,19 +1,22 @@
 #include "failai.h"
+#include "studentas.h"
 
-bool failiukasvektorius(vector <Studentas>& Grupe, string failassupavadinimu) {
+bool failiukasvektorius(vector <Studentas>& Grupe, const string& failassupavadinimu) {
     ifstream skaitymui(failassupavadinimu);
     if (!skaitymui.is_open()) {
         return false;
     }
-
+    
     string visaeil;
+    getline(skaitymui, visaeil);
+
     while (getline(skaitymui, visaeil)) {
         if (visaeil.empty()) continue;
 
         istringstream kintam(visaeil);
         Studentas studencioks;
-        kintam >> studencioks.pav >> studencioks.var;
-
+        kintam >> studencioks.pavard >> studencioks.vard;
+ 
         vector <int> paz;
         int j;
 
@@ -23,21 +26,21 @@ bool failiukasvektorius(vector <Studentas>& Grupe, string failassupavadinimu) {
 
         if (paz.empty()) continue;
 
-        studencioks.egz = paz.back();
+        studencioks.egzam = paz.back();
         paz.pop_back();
-        studencioks.paz = paz;
+        studencioks.pazym = paz;
 
         double sum = 0;
         for (int q : paz)
             sum = sum + q;
 
         if (!paz.empty()) {
-            studencioks.vidur = (sum / paz.size()) * 0.4 + studencioks.egz * 0.6;
-            studencioks.median = ieskommediana(paz) * 0.4 + studencioks.egz * 0.6;
+            studencioks.vidurk = (sum / paz.size()) * 0.4 + studencioks.egzam * 0.6;
+            studencioks.medianaa = ieskommediana(paz) * 0.4 + studencioks.egzam * 0.6;
         }
         else {
-            studencioks.vidur = 0.6 * studencioks.egz;
-            studencioks.median = 0.6 * studencioks.egz;
+            studencioks.vidurk = 0.6 * studencioks.egzam;
+            studencioks.medianaa = 0.6 * studencioks.egzam;
         }
         Grupe.push_back(studencioks);
     }
@@ -45,7 +48,7 @@ bool failiukasvektorius(vector <Studentas>& Grupe, string failassupavadinimu) {
     return true;
 }
 
-void atvaizdvektorius(vector <Studentas>& Grupe) {
+void atvaizdvektorius(vector <Studentas> & Grupe) {
     if (!Grupe.empty()) {
         cout << "Kaip norite atlikti rusiavima? Pagal vardus - 1, pagal pavardes - 2, pagal vidurkius - 3. " << endl;
         int prad;
@@ -53,9 +56,9 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
 
         auto rikiavimopradzia = high_resolution_clock::now();
 
-        if (prad == 1) { sort(Grupe.begin(), Grupe.end(), sortinamVardus); }
-        else if (prad == 2) sort(Grupe.begin(), Grupe.end(), sortinamPavardes);
-        else if (prad == 3) sort(Grupe.begin(), Grupe.end(), sortinam_balus_didz);
+        if (prad == 1) { sort(Grupe.begin(), Grupe.end(), sortvard); }
+        else if (prad == 2) sort(Grupe.begin(), Grupe.end(), sortpav);
+        else if (prad == 3) sort(Grupe.begin(), Grupe.end(), sortvidurk);
 
         auto rikiavimopabaiga = high_resolution_clock::now();
         auto rikiavimasuztruko = duration<double>(rikiavimopabaiga - rikiavimopradzia).count();
@@ -84,15 +87,15 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
         rezultatai << string(65, '-') << endl;
 
         for (const auto& s : Grupe) {
-            rezultatai << setw(18) << left << s.pav;
-            rezultatai << setw(18) << left << s.var;
+            rezultatai << setw(18) << left << s.pavard;
+            rezultatai << setw(18) << left << s.vard;
             if (abc == 'A' || abc == 'a')
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidur;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidurk;
             if (abc == 'B' || abc == 'b')
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.median;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.medianaa;
             if (abc == 'C' || abc == 'c') {
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidur;
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.median;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidurk;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.medianaa;
             }
             rezultatai << endl;
         }
@@ -102,8 +105,8 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
         int neislaik = 0;
 
         for (auto& nez : Grupe) {
-            kursovidurkis = kursovidurkis + nez.vidur;
-            if (nez.vidur >= 4.5) islaik++;
+            kursovidurkis = kursovidurkis + nez.vidurk;
+            if (nez.vidurk >= 4.5) islaik++;
             else neislaik++;
         }
         kursovidurkis = kursovidurkis / Grupe.size();
@@ -129,7 +132,7 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
 
 
             auto pradedamskaidyma = high_resolution_clock::now();
-            pirmastr_vector(Grupe, vargseliai, kietiakai, imed);
+            skaidymasvector_pirm(Grupe, vargseliai, kietiakai, imed);
             auto baigiamskaidyma = high_resolution_clock::now();
             double skaid = duration<double>(baigiamskaidyma - pradedamskaidyma).count();
 
@@ -153,16 +156,16 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
             auto startass = high_resolution_clock::now();
 
             for (const auto& s : vargseliai) {
-                const double gal = imed ? s.median : s.vidur;
-                vargsiukaiisv << setw(17) << left << s.pav;
-                vargsiukaiisv << setw(17) << left << s.var;
+                const double gal = imed ? s.medianaa : s.vidurk;
+                vargsiukaiisv << setw(17) << left << s.pavard;
+                vargsiukaiisv << setw(17) << left << s.vard;
                 vargsiukaiisv << setw(21) << left << fixed << setprecision(2) << gal << endl;
             }
 
             for (const auto& s : kietiakai) {
-                const double gal = imed ? s.median : s.vidur;
-                kietekaiisv << setw(17) << left << s.pav;
-                kietekaiisv << setw(17) << left << s.var;
+                const double gal = imed ? s.medianaa : s.vidurk;
+                kietekaiisv << setw(17) << left << s.pavard;
+                kietekaiisv << setw(17) << left << s.vard;
                 kietekaiisv << setw(21) << left << fixed << setprecision(2) << gal << endl;
             }
             auto endas = high_resolution_clock::now();
@@ -177,7 +180,7 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
             vector <Studentas> varg2;
 
             auto pradedam2 = high_resolution_clock::now();
-            antrastr_vector(nekeiciamorg, varg2, imed);
+            skaidymasvector_antr(nekeiciamorg, varg2, imed);
             auto baigiam2 = high_resolution_clock::now();
 
             cout << "2 strategijos vector skaidymas uztruko: " << fixed << setprecision(4) << duration<double>(baigiam2 - pradedam2).count() << " s." << endl;
@@ -188,7 +191,7 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
             vector <Studentas> kietiakiai;
             
             auto pradze = high_resolution_clock::now();
-            treciastr_vector(nukop, vargseliai, kietiakiai, imed);
+            skaidymasvector_trec(nukop, vargseliai, kietiakiai, imed);
             auto pabi = high_resolution_clock::now();
             cout << "3 strategijos skaidymas uztruko: " << fixed << setprecision(4) << duration<double>(pabi - pradze).count() << " s." << endl;
         }
@@ -198,19 +201,20 @@ void atvaizdvektorius(vector <Studentas>& Grupe) {
     }
 }
 
-bool failiukassarasas(list <Studentas>& Grupe, string failassupavadinimu) {
+bool failiukassarasas(list <Studentas>& Grupe,const string & failassupavadinimu) {
     ifstream skaitymui(failassupavadinimu);
     if (!skaitymui.is_open()) {
         return false;
     }
 
     string visaeil;
+    getline(skaitymui, visaeil);
     while (getline(skaitymui, visaeil)) {
         if (visaeil.empty()) continue;
 
         istringstream kintam(visaeil);
         Studentas studencioks;
-        kintam >> studencioks.pav >> studencioks.var;
+        kintam >> studencioks.pavard >> studencioks.vard;
 
         vector <int> paz;
         int j;
@@ -221,21 +225,21 @@ bool failiukassarasas(list <Studentas>& Grupe, string failassupavadinimu) {
 
         if (paz.empty()) continue;
 
-        studencioks.egz = paz.back();
+        studencioks.egzam = paz.back();
         paz.pop_back();
-        studencioks.paz = paz;
+        studencioks.pazym = paz;
 
         double sum = 0;
         for (int q : paz)
             sum = sum + q;
 
         if (!paz.empty()) {
-            studencioks.vidur = (sum / paz.size()) * 0.4 + studencioks.egz * 0.6;
-            studencioks.median = ieskommediana(paz) * 0.4 + studencioks.egz * 0.6;
+            studencioks.vidurk = (sum / paz.size()) * 0.4 + studencioks.egzam * 0.6;
+            studencioks.medianaa = ieskommediana(paz) * 0.4 + studencioks.egzam * 0.6;
         }
         else {
-            studencioks.vidur = 0.6 * studencioks.egz;
-            studencioks.median = 0.6 * studencioks.egz;
+            studencioks.vidurk = 0.6 * studencioks.egzam;
+            studencioks.medianaa = 0.6 * studencioks.egzam;
         }
         Grupe.push_back(studencioks);
     }
@@ -251,9 +255,9 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
 
         auto rikiavimopradzia = high_resolution_clock::now();
 
-        if (prad == 1) Grupe.sort(sortinamVardus);
-        else if (prad == 2) Grupe.sort(sortinamPavardes);
-        else if (prad == 3) Grupe.sort(sortinam_balus_didz);
+        if (prad == 1) Grupe.sort([](const Studentas& a, const Studentas& b) {return sortvard(a, b); });
+        else if (prad == 2) Grupe.sort([](const Studentas& a, const Studentas& b) {return sortpav(a, b); });
+        else if (prad == 3) Grupe.sort([](const Studentas& a, const Studentas& b) {return sortvidurk(a, b); });
 
         auto rikiavimopabaiga = high_resolution_clock::now();
         auto rikiavimasuztruko = duration<double>(rikiavimopabaiga - rikiavimopradzia).count();
@@ -282,15 +286,15 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         rezultatai << string(65, '-') << endl;
 
         for (const auto& s : Grupe) {
-            rezultatai << setw(18) << left << s.pav;
-            rezultatai << setw(18) << left << s.var;
+            rezultatai << setw(18) << left << s.pavard;
+            rezultatai << setw(18) << left << s.vard;
             if (abc == 'A' || abc == 'a')
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidur;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidurk;
             if (abc == 'B' || abc == 'b')
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.median;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.medianaa;
             if (abc == 'C' || abc == 'c') {
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidur;
-                rezultatai << setw(22) << left << fixed << setprecision(2) << s.median;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.vidurk;
+                rezultatai << setw(22) << left << fixed << setprecision(2) << s.medianaa;
             }
             rezultatai << endl;
         }
@@ -300,8 +304,8 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         int neislaik = 0;
 
         for (auto& nez : Grupe) {
-            kursovidurkis = kursovidurkis + nez.vidur;
-            if (nez.vidur >= 4.5) islaik++;
+            kursovidurkis = kursovidurkis + nez.vidurk;
+            if (nez.vidurk >= 4.5) islaik++;
             else neislaik++;
         }
         kursovidurkis = kursovidurkis / Grupe.size();
@@ -326,7 +330,7 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
             list<Studentas>kietiakai;
 
             auto pradedamskaidyma = high_resolution_clock::now();
-            pirmastr_list(Grupe, vargseliai, kietiakai, imed);
+            skaidymaslist_pirm(Grupe, vargseliai, kietiakai, imed);
             auto baigiamskaidyma = high_resolution_clock::now();
             double skaid = duration<double>(baigiamskaidyma - pradedamskaidyma).count();
 
@@ -351,16 +355,16 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
             auto startass = high_resolution_clock::now();
 
             for (const auto& s : vargseliai) {
-                const double gal = imed ? s.median : s.vidur;
-                vargsiukaiisv << setw(17) << left << s.pav;
-                vargsiukaiisv << setw(17) << left << s.var;
+                const double gal = imed ? s.medianaa : s.vidurk;
+                vargsiukaiisv << setw(17) << left << s.pavard;
+                vargsiukaiisv << setw(17) << left << s.vard;
                 vargsiukaiisv << setw(21) << left << fixed << setprecision(2) << gal << endl;
             }
 
             for (const auto& s : kietiakai) {
-                const double gal = imed ? s.median : s.vidur;
-                kietekaiisv << setw(17) << left << s.pav;
-                kietekaiisv << setw(17) << left << s.var;
+                const double gal = imed ? s.medianaa : s.vidurk;
+                kietekaiisv << setw(17) << left << s.pavard;
+                kietekaiisv << setw(17) << left << s.vard;
                 kietekaiisv << setw(21) << left << fixed << setprecision(2) << gal << endl;
             }
 
@@ -374,7 +378,7 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
             list <Studentas> varg2;
 
             auto pradedam2 = high_resolution_clock::now();
-            antrastr_list(nekeiciamorg, varg2, imed);
+            skaidymaslist_antr(nekeiciamorg, varg2, imed);
             auto baigiam2 = high_resolution_clock::now();
 
             cout << "2 strategijos list skaidymas uztruko: " << fixed << setprecision(4) << duration<double>(baigiam2 - pradedam2).count() << " s." << endl;
@@ -385,7 +389,7 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
             list <Studentas> kietiakiai;
 
             auto pradze = high_resolution_clock::now();
-            treciastr_list(nukop, vargseliai, kietiakiai, imed);
+            skaidymaslist_trec(nukop, vargseliai, kietiakiai, imed);
             auto pabi = high_resolution_clock::now();
             cout << "3 strategijos skaidymas uztruko: " << fixed << setprecision(4) << duration<double>(pabi - pradze).count() << " s." << endl;
         }
@@ -395,85 +399,3 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
     }
 }
 
-double galutinis(const Studentas& s, bool imammediana) {
-    return imammediana ? s.median : s.vidur;
-}
-
-void pirmastr_vector(const vector <Studentas>& in, vector<Studentas>& varg, vector <Studentas>& kiet, bool imammediana) {
-    varg.clear(); kiet.clear();
-    varg.reserve(in.size() / 2);
-    kiet.reserve(in.size() / 2);
-
-    partition_copy(in.begin(), in.end(), back_inserter(varg), back_inserter(kiet), [imammediana](const Studentas& s) {
-        return galutinis(s, imammediana) < 5.0;
-        });
-}
-
-void pirmastr_list(const list <Studentas>& in, list<Studentas>& varg, list <Studentas>& kiet, bool imammediana) {
-    varg.clear(); kiet.clear();
-    for (const Studentas& s : in) {
-        if (galutinis(s, imammediana)<5.0) varg.push_back(s);
-        else
-            kiet.push_back(s);
-        }
-}
-
-void antrastr_vector(vector <Studentas>& in, vector<Studentas>& varg, bool imammediana) {
-    varg.clear();
-
-    for (const auto& s : in) {
-        if (galutinis(s, imammediana) < 5.0) {
-            varg.push_back(s);
-        }
-    }
-    in.erase(remove_if(in.begin(), in.end(), [imammediana](const Studentas& s) {
-        return galutinis(s, imammediana) < 5.0;
-        }),
-        in.end()
-    );
-}
-
-void antrastr_list(list <Studentas>& in, list<Studentas>& varg, bool imammediana) {
-    varg.clear();
-
-    auto tnet = [imammediana](const Studentas& s) {
-        return galutinis(s, imammediana) < 5.0;
-        };
-
-    copy_if(in.begin(), in.end(), back_inserter(varg), tnet);
-
-    in.remove_if(tnet);
-}
-
-void treciastr_vector(vector <Studentas>& in, vector<Studentas>& varg, vector <Studentas>& kiet, bool imammediana) {
-    varg.clear();
-    kiet.clear();
-
-    auto itera = stable_partition(in.begin(), in.end(), [imammediana](const Studentas& s) {
-        return galutinis(s, imammediana) < 5.0;
-        });
-
-    varg.reserve(distance(in.begin(), itera));
-    kiet.reserve(distance(itera, in.end()));
-
-    move(in.begin(), itera, back_inserter(varg));
-    move(itera, in.end(), back_inserter(kiet));
-
-    in.clear();
-}
-
-void treciastr_list(list <Studentas>& in, list<Studentas>& varg, list <Studentas>& kiet, bool imammediana) {
-    varg.clear();
-    kiet.clear();
-    
-    for (auto nein = in.begin(); nein != in.end(); ) {
-        if (galutinis(*nein, imammediana) < 5.0) {
-            auto kop = nein++;
-            varg.splice(varg.end(), in, kop);
-        } 
-        else {
-            ++nein;
-        }
-    }
-    kiet.splice(kiet.end(), in);
-}
