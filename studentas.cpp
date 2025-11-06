@@ -1,36 +1,59 @@
 #include "studentas.h"
 
-Studentas::Studentas() = default;
 
-Studentas::Studentas(string v, string p) {
-	vard = v;
-	pavard = p;
+double mediana(const vector<double>& v) {
+	if (v.empty()) return 0.0;
+	vector <double> kint1 = v;
+
+	sort(kint1.begin(), kint1.end());
+
+	auto n = kint1.size();
+	return (n % 2) ? kint1[n / 2] : (kint1[n / 2 - 1] + kint1[n / 2]) / 2.0;
 }
 
-void Studentas::skaiciuojuvidmed() {
-	if (pazym.empty()) {
-		vidurk = 0.6 * egzam;
-		medianaa = 0.6 * egzam;
-		return;
+double vidurkis(const vector<double> & v) {
+	if (v.empty()) return 0.0;
+	double suma = accumulate(v.begin(), v.end(), 0.0);
+	return suma / v.size();
+}
+
+
+
+Studentas::Studentas(istream & istu) : egzaminas_(0) {
+	readStudent(istu);
+}
+double Studentas::galutinismed() const {
+	return 0.4 * mediana(nd_) + 0.6 * egzaminas_;
+}
+double Studentas::galutinisvid() const {
+	return 0.4 * vidurkis(nd_) + 0.6 * egzaminas_;
+}
+
+istream& Studentas::readStudent(istream & istu) {
+	vardas_.clear();
+	pavarde_.clear();
+	nd_.clear();
+	egzaminas_ = 0;
+
+	if (!(istu >> pavarde_ >> vardas_)) return istu;
+
+
+	double paz;
+	vector <double> laikk;
+	while (istu >> paz) laikk.push_back(paz);
+
+	if (!laikk.empty()) {
+		egzaminas_ = laikk.back();
+		laikk.pop_back();
+		nd_ = move(laikk);
 	}
 
-	double suma = 0;
-	for (int p : pazym) suma += p;
-	double vid = suma / pazym.size();
+	istu.clear();
+	return istu;
 
-	vector <int> laikina = pazym;
-	sort(laikina.begin(), laikina.end());
-	double med;
-	int laikindyd = laikina.size();
-	if (laikindyd % 2 == 1) med = laikina[laikindyd / 2];
-	else med = (laikina[laikindyd / 2 - 1] + laikina[laikindyd / 2]) / 2.0;
-	vidurk = vid * 0.4 + egzam * 0.6;
-	medianaa = med * 0.4 + egzam * 0.6;
-}
-double Studentas::galutinis(bool naudotimediana) const {
-	return naudotimediana ? medianaa : vidurk;
 }
 
-void Studentas::isvesti() const {
-	cout << "Vardas ir pavarde( " << vard << " " << pavard << " ). Jo vidurkis: " << vidurk << " , o mediana: " << medianaa << endl;
-}
+
+bool lyginam(const Studentas& a, const Studentas& b) { return a.vardas() < b.vardas(); }
+bool lyginampavardes(const Studentas& a, const Studentas& b) { return a.pavarde() < b.pavarde(); }
+bool lyginamegzam(const Studentas& a, const Studentas& b) { return a.egzaminas() < b.egzaminas(); }
