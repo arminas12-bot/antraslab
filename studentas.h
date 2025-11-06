@@ -36,6 +36,12 @@ public:
 
 	Studentas(const string& vard, const string& pav, const vector <double>& nd, double egz) :vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egz) {}
 
+	~Studentas() = default;
+	Studentas(const Studentas&) = default;
+	Studentas(Studentas&&) = default;
+	Studentas& operator = (const Studentas&) = default;
+	Studentas& operator = (Studentas&&) = default;
+
 
 	inline const string & vardas() const { return vardas_; }
 	inline const string & pavarde() const { return pavarde_; }
