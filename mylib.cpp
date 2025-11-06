@@ -61,5 +61,5 @@ void generuotifaila(const string & genfail, int iraskiekis) {
 
     auto pabaiga = high_resolution_clock::now();
     auto uztruko = duration_cast<milliseconds>(pabaiga - pradzia);
-    cout << genfail << ".Si faila is visos sukurti uztruko " << uztruko.count() << " ms." << endl;
+    cout << genfail << ".Si faila is viso sukurti uztruko: " << uztruko.count() << " ms." << endl;
 }
