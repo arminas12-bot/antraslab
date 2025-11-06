@@ -46,22 +46,9 @@ using std::partition;
 using std::stable_partition;
 
 
-struct Studentas {
-    string var;
-    string pav;
-    vector <int> paz;
-    int egz;
-    double vidur;
-    double median;
-    bool valid = true;
-};
 
 
-Studentas Stud_iv();
-double ieskommediana(vector <int> paz);
+
+double ieskommediana(const vector <int> & paz);
 void generuojafailus();
-void generuotifaila(string genfail, int iraskiekis);
-
-bool sortinamVardus(const Studentas& pirmvard, const Studentas& antrvard);
-bool sortinamPavardes(const Studentas& pirmpavard, const Studentas& antrpavard);
-bool sortinam_balus_didz(const Studentas& pirmbalas, const Studentas& antrbalas);
+void generuotifaila(const string & genfail, int iraskiekis);
