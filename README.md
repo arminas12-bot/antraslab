@@ -185,11 +185,11 @@ Buvo atliekamas kiekvienos strategijos tyrimas. Kiekviena strategija su vector a
 Išvada: naudojant pirmos strategijos skaidymą list konteineris buvo apytiksliai 1.5 karto lėtesnis nei vector; naudojant antros strategijos rūšiavimą pranašesnis buvo taip pat vector konteineris, tačiau labai nežymiai - apie 15% kiekvienu atveju; naudojant trečios strategijos skaidymą rezultatai pasikeitė - buvo taikomi nauji algoritmai, kurie gerokai pagreitino procesą ir pranašumą įgijo list konteineris, kuris vidutiniškai buvo greitesnis du kartus nei vector.
 
 
-##V1.1 VERSIJA
+## V1.1 VERSIJA
 Programa nuo šiol yra realizuota su Class tipu, tačiau programos veikimo principas ir esmė nepasikeitusi. Atlikus pakeitimus buvo atlikti spartos analizės tyrimai su 100000 ir 1000000 įrašų studentų failais.
-Gauti rezultatai pateikiami lentelėse
+Gauti rezultatai pateikiami žemiau esančiose lentelėse.
 
-### Class su 100000 studentų
+### CLASS su 100000 studentų
 
 | Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
 |:--------------|:----------:|-------:|
@@ -197,7 +197,7 @@ Gauti rezultatai pateikiami lentelėse
 | O2 | 1.86 s|0.0231 s|
 | O3 | 1.84 s|0.0225 s|
 
-### Class su 1000000 studentų
+### CLASS su 1000000 studentų
 
 | Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
 |:--------------|:----------:|-------:|
@@ -205,7 +205,7 @@ Gauti rezultatai pateikiami lentelėse
 | O2 | 22.6 s| 0.2539 s|
 | O3 | 22.4 s|0.2517 s|
 
-### Struct su 100000 studentų
+### STRUCT su 100000 studentų
 
 | Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
 |:--------------|:----------:|-------:|
@@ -213,7 +213,7 @@ Gauti rezultatai pateikiami lentelėse
 | O2 |1.83 s| 0.221 s|
 | O3 |1.82 s| 0.2131 s|
 
-### Struct su 1000000 studentų
+### STRUCT su 1000000 studentų
 
 | Optimizavimo lygis | Failo nuskaitymas | Studentų skaidymas |
 |:--------------|:----------:|-------:|
@@ -221,3 +221,9 @@ Gauti rezultatai pateikiami lentelėse
 | O2 | 22.5 s| 0.2471 s|
 | O3 |22.2 s| 0.242 s|
 
+IŠVADA: Optimizavo lygiai turėjo nedidelį poveikį tiek studentų failų nuskaitymui, tiek skaidymui į grupes. Įprastai laiko buvo mažesnis tik keliomis dešimtosiomis sekundės dalimis. Tikrinant 100000 ir 1000000 dydžio failus galima pastebėti, jog didesnio failo studentų skaidymo laikai buvo maždaug 11 kartų didesni.
+
+### EXE failų dydžiai naudojant CLASS pagal optimizavimo lygį
+#### O1 - 199 KB, O2 - 192 KB, O3 - 198 KB.
+### EXE failų dydžiai naudojant STRUCT pagal optimizavimo lygį
+#### O1 - 200 KB, O2 - 198 KB, O3 - 196 KB.
