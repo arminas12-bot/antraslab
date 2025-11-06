@@ -2,7 +2,7 @@
 #include "studentas.h"
 
 bool  ar_vargs(const Studentas& s, bool naudotimediana) {
-	return s.galutinis(naudotimediana) < 5.0;
+	return s.galutinisbalas(naudotimediana) < 5.0;
 }
 
 void skaidymasvector_pirm(const vector <Studentas>& in, vector<Studentas>& vargseliai, vector <Studentas>& kietiakai, bool naudotimediana) {
