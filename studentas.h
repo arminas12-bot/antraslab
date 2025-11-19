@@ -19,6 +19,7 @@ using std::numeric_limits;
 using std::streamsize;
 using std::move;
 using std::isdigit;
+using std::ostream;
 
 double mediana(const vector<double>&);
 double vidurkis(const vector<double>&);
@@ -35,6 +36,10 @@ public:
 	explicit Studentas(istream & istu);
 
 	Studentas(const string& vard, const string& pav, const vector <double>& nd, double egz) :vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egz) {}
+
+	Studentas(const Studentas& s);
+
+	Studentas& operator=(const Studentas& s);
 
 	~Studentas() {
 		vardas_.clear();
@@ -57,6 +62,9 @@ public:
 	}
 
 	istream& readStudent(istream&);
+
+	friend istream& operator>>(istream& is, Studentas& s);
+	friend ostream& operator <<(ostream& os, const Studentas& s);
 
 };
 
