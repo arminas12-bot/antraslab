@@ -16,7 +16,7 @@ bool failiukasvektorius(vector <Studentas>& Grupe, const string& failassupavadin
         istringstream kintam(visaeil);
 
         Studentas s;
-        s.readStudent(kintam);
+        kintam >> s;
         Grupe.push_back(s);
     }
     return true;
@@ -95,6 +95,10 @@ void atvaizdvektorius(vector <Studentas> & Grupe) {
         auto pabaigiam = high_resolution_clock::now();
         auto bendraslaikas = duration<double>(pabaigiam - pradedam).count();
         cout << "Irasymas i rezultatu faila uztruko: " << fixed << setprecision(4) << bendraslaikas << " s." << endl;
+        if (!Grupe.empty()) {
+            cout << "Pirmo studento duomenys per operator <<: " << Grupe[0] << endl;
+        }
+
 
         cout << "Pasirinkite norima skaidymo strategija: " << endl;
         cout << "1 - du nauji to paties tipo konteineriai, 2 - naudojamas tik vienas konteineris, 3 - optimizuota, veikianti greičiausiai" << endl;
@@ -190,7 +194,7 @@ bool failiukassarasas(list <Studentas>& Grupe,const string & failassupavadinimu)
 
         istringstream kintam(visaeil);
         Studentas s;
-        s.readStudent(kintam);
+        kintam >> s;
         Grupe.push_back(s);
     }
     return true;
@@ -269,6 +273,11 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         auto pabaigiam = high_resolution_clock::now();
         auto bendraslaikas = duration<double>(pabaigiam - pradedam).count();
         cout << "Irasymas i rezultatu faila uztruko: " << fixed << setprecision(4) << bendraslaikas << " s." << endl;
+        cout << "Pirmo studento duomenys per operator << :" << endl;
+        for (const auto& s : Grupe) {
+            cout << s << endl;
+            break;
+        }
         cout << "Rezultatai sekmingai issaugoti" << endl;
 
         cout << "Pasirinkite norima skaidymo strategija: " << endl;
