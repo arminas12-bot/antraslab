@@ -1,93 +1,74 @@
-#include "studentas.h"
+#pragma once
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <limits>
+#include <sstream>
+#include <utility>
 
+using std::string;
+using std::vector;
+using std::cout;
+using std::endl;
+using std::sort;
+using std::istream;
+using std::accumulate;
+using std::numeric_limits;
+using std::streamsize;
+using std::move;
+using std::isdigit;
+using std::ostream;
 
-double mediana(const vector<double>& v) {
-	if (v.empty()) return 0.0;
-	vector <double> kint1 = v;
+double mediana(const vector<double>&);
+double vidurkis(const vector<double>&);
 
-	sort(kint1.begin(), kint1.end());
+class Studentas {
+private:
+	string vardas_;
+	string pavarde_;
+	vector <double> nd_;
+	double egzaminas_;
 
-	auto n = kint1.size();
-	return (n % 2) ? kint1[n / 2] : (kint1[n / 2 - 1] + kint1[n / 2]) / 2.0;
-}
+public:
+	Studentas() : egzaminas_(0) {}
+	explicit Studentas(istream & istu);
 
-double vidurkis(const vector<double> & v) {
-	if (v.empty()) return 0.0;
-	double suma = accumulate(v.begin(), v.end(), 0.0);
-	return suma / v.size();
-}
+	Studentas(const string& vard, const string& pav, const vector <double>& nd, double egz) :vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egz) {}
 
+	Studentas(const Studentas& s);
 
-Studentas::Studentas(istream & istu) : egzaminas_(0) {
-	readStudent(istu);
-}
+	Studentas& operator=(const Studentas& s);
 
-Studentas::Studentas(const Studentas& s) {
-	vardas_ = s.vardas_;
-	pavarde_ = s.pavarde_;
-	nd_ = s.nd_;
-	egzaminas_ = s.egzaminas_;
-}
-
-Studentas& Studentas::operator=(const Studentas& s) {
-	if (this != &s) {
-		vardas_ = s.vardas_;
-		pavarde_ = s.pavarde_;
-		nd_ = s.nd_;
-		egzaminas_ = s.egzaminas_;
-	}
-	return *this;
-}
-
-double Studentas::galutinismed() const {
-	return 0.4 * mediana(nd_) + 0.6 * egzaminas_;
-}
-double Studentas::galutinisvid() const {
-	return 0.4 * vidurkis(nd_) + 0.6 * egzaminas_;
-}
-
-istream& Studentas::readStudent(istream & istu) {
-	vardas_.clear();
-	pavarde_.clear();
-	nd_.clear();
-	egzaminas_ = 0;
-
-	if (!(istu >> pavarde_ >> vardas_)) return istu;
-
-
-	double paz;
-	vector <double> laikk;
-	while (istu >> paz) laikk.push_back(paz);
-
-	if (!laikk.empty()) {
-		egzaminas_ = laikk.back();
-		laikk.pop_back();
-		nd_ = move(laikk);
+	~Studentas() {
+		vardas_.clear();
+		pavarde_.clear();
+		nd_.clear();
+		egzaminas_ = 0;
 	}
 
-	istu.clear();
-	return istu;
 
-}
 
-istream& operator>>(istream& is, Studentas& s) {
-	return s.readStudent(is);
-}
+	inline const string & vardas() const { return vardas_; }
+	inline const string & pavarde() const { return pavarde_; }
+	inline const vector <double>& nd() const { return nd_; }
+	inline double egzaminas() const { return egzaminas_; }
 
-ostream& operator <<(ostream& os, const Studentas& s) {
-	os << s.pavarde() << " " << s.vardas();
-
-	if (!s.nd().empty()) {
-		os << " ND:";
-		for (double paz : s.nd()) {
-			os << " " << paz;
-		}
+	double galutinisvid() const;
+	double galutinismed() const;
+	double galutinisbalas(bool naudotimediana)const {
+		return naudotimediana ? galutinismed() : galutinisvid();
 	}
-	os << " Egz:" << s.egzaminas();
-	return os;
-}
 
+	istream& readStudent(istream&);
 
-bool lyginam(const Studentas& a, const Studentas& b) { return a.vardas() < b.vardas(); }
-bool lyginampavardes(const Studentas& a, const Studentas& b) { return a.pavarde() < b.pavarde(); }
-bool lyginamegzam(const Studentas& a, const Studentas& b) { return a.egzaminas() < b.egzaminas(); }
+	friend istream& operator>>(istream& is, Studentas& s);
+	friend ostream& operator <<(ostream& os, const Studentas& s);
+
+};
+
+bool lyginam(const Studentas& a, const Studentas& b);
+bool lyginampavardes(const Studentas& a, const Studentas& b);
+bool lyginamegzam(const Studentas& a, const Studentas& b);
+
