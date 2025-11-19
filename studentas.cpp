@@ -22,23 +22,6 @@ Studentas::Studentas(istream & istu) : egzaminas_(0) {
 	readStudent(istu);
 }
 
-Studentas::Studentas(const Studentas& s) {
-	vardas_ = s.vardas_;
-	pavarde_ = s.pavarde_;
-	nd_ = s.nd_;
-	egzaminas_ = s.egzaminas_;
-}
-
-Studentas& Studentas::operator=(const Studentas& s) {
-	if (this != &s) {
-		vardas_ = s.vardas_;
-		pavarde_ = s.pavarde_;
-		nd_ = s.nd_;
-		egzaminas_ = s.egzaminas_;
-	}
-	return *this;
-}
-
 double Studentas::galutinismed() const {
 	return 0.4 * mediana(nd_) + 0.6 * egzaminas_;
 }
