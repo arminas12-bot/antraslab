@@ -70,6 +70,23 @@ istream& Studentas::readStudent(istream & istu) {
 
 }
 
+istream& operator>>(istream& is, Studentas& s) {
+	return s.readStudent(is);
+}
+
+ostream& operator <<(ostream& os, const Studentas& s) {
+	os << s.pavarde() << " " << s.vardas();
+
+	if (!s.nd().empty()) {
+		os << " ND:";
+		for (double paz : s.nd()) {
+			os << " " << paz;
+		}
+	}
+	os << " Egz:" << s.egzaminas();
+	return os;
+}
+
 
 bool lyginam(const Studentas& a, const Studentas& b) { return a.vardas() < b.vardas(); }
 bool lyginampavardes(const Studentas& a, const Studentas& b) { return a.pavarde() < b.pavarde(); }
