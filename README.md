@@ -227,3 +227,20 @@ IŠVADA: Optimizavo lygiai turėjo nedidelį poveikį tiek studentų failų nusk
 #### O1 - 199 KB, O2 - 192 KB, O3 - 198 KB.
 ### EXE failų dydžiai naudojant STRUCT pagal optimizavimo lygį
 #### O1 - 200 KB, O2 - 198 KB, O3 - 196 KB.
+
+
+
+## V1.2 VERSIJA
+Nuo šiol versijoje papildomai įgyvendinta:
+a) „Rule of three“ turimai klasei Studentas - aprašytas kopijavimo konstruktorius, priskyrimo operatorius ir destruktorius;
+b) realizuoti įvesties >> ir išvesties << operatoriai klasei Studentas.
+
+Kiekvieno iš OPERATOR << arba >> konkretūs kodo pavyzdžiai yra pateikiami žemiau esančiose nuotraukose (nuotraukos yra padarytos iš programos failai.cpp ir studentas.cpp failuose esančių kodų).
+
+### OPERATOR >>
+1. Duomenys iš failo yra nuskaitomi su operator >> pagalba. Pavzydys: <img width="592" height="400" alt="image" src="https://github.com/user-attachments/assets/f3e332e9-8f46-4bca-b47b-484eddfd9a54" />
+
+### OPERATOR <<
+2. Išvesties operator << leidžia tvarkingai išvesti duomenis apie studentą. Pavyzdys: <img width="711" height="330" alt="image" src="https://github.com/user-attachments/assets/98d65b2a-df53-415d-b9bc-69cc1e85cc73" />
+
+3. Operator << automatiškai parodo pirmojo studento iš sąrašo vardą, pavardę bei gautus nd įvertinimus ir egzamino įvertį. Pavyzdys: <img width="931" height="112" alt="image" src="https://github.com/user-attachments/assets/969e9f1f-2c50-4bbe-ba0e-632da3c5c7ac" />
