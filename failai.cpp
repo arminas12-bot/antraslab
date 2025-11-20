@@ -274,10 +274,18 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         auto bendraslaikas = duration<double>(pabaigiam - pradedam).count();
         cout << "Irasymas i rezultatu faila uztruko: " << fixed << setprecision(4) << bendraslaikas << " s." << endl;
         cout << "Pirmo studento duomenys per operator << :" << endl;
-        for (const auto& s : Grupe) {
-            cout << s << endl;
-            break;
+        if (!Grupe.empty()) {
+            auto it = Grupe.begin();
+            cout << *it << endl;
+
+            Studentas kopijuojamas(*it);
+            Studentas priskiriamas;
+            priskiriamas = *it;
+
+            cout << "Kopijuojamas studentas: " << kopijuojamas << endl;
+            cout << "Priskiriamas studentas: " << priskiriamas << endl;
         }
+
         cout << "Rezultatai sekmingai issaugoti" << endl;
 
         cout << "Pasirinkite norima skaidymo strategija: " << endl;
