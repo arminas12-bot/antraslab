@@ -80,10 +80,10 @@ ostream& operator <<(ostream& os, const Studentas& s) {
 	if (!s.nd().empty()) {
 		os << " ND:";
 		for (double paz : s.nd()) {
-			os << " " << paz;
+			os << " " <<static_cast<int>(paz);
 		}
 	}
-	os << " Egz:" << s.egzaminas();
+	os << " Egz:" << static_cast<int>(s.egzaminas());
 	return os;
 }
 
