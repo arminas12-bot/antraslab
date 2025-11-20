@@ -244,3 +244,19 @@ Kiekvieno iš OPERATOR << arba >> konkretūs kodo pavyzdžiai yra pateikiami že
 2. Išvesties operator << leidžia tvarkingai išvesti duomenis apie studentą. Pavyzdys: <img width="711" height="330" alt="image" src="https://github.com/user-attachments/assets/98d65b2a-df53-415d-b9bc-69cc1e85cc73" />
 
 3. Operator << automatiškai parodo pirmojo studento iš sąrašo vardą, pavardę bei gautus nd įvertinimus ir egzamino įvertį. Pavyzdys: <img width="931" height="112" alt="image" src="https://github.com/user-attachments/assets/969e9f1f-2c50-4bbe-ba0e-632da3c5c7ac" />
+
+
+### Rule Of Three realizavimas ir demonstracija
+#### Kopijavimo konstruktoriaus realizacija
+<img width="343" height="115" alt="image" src="https://github.com/user-attachments/assets/80fa490e-db37-4215-a6b4-b5b09154d8ec" />
+
+#### Priskyrimo operatoriaus realizacija
+<img width="413" height="157" alt="image" src="https://github.com/user-attachments/assets/5301fe79-71f4-410f-8a29-c88d193bf384" />
+
+#### Destruktoriaus realizacija
+<img width="203" height="105" alt="image" src="https://github.com/user-attachments/assets/0f20e7e7-d6aa-452e-a2d0-ec78503805a2" />
+
+#### Visų demonstracija yra šiame kodo bloke:
+<img width="502" height="187" alt="image" src="https://github.com/user-attachments/assets/1a1a16a9-d05e-46e1-9112-37833073f58b" />
+
+IŠVADA: rankinis įvedimas paliktas taip, kaip buvo; nuskaitymas iš failo pakeistas - kiekviena eilutė nuo šiol nuskaitom su operator >> (kintam >> s); sugeneruoti failai vėliau gali būti nuskaitomi tokiu pačiu būdu, t.y. per operator >>; išvedimui į konsolę yra naudojamas operator << (cout << Grupe[0], cout << kopijuojamas ir t.t.); išvedimui į failą metodai palikti tie patys.
