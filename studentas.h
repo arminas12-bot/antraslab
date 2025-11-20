@@ -55,6 +55,17 @@ public:
 	inline const vector <double>& nd() const { return nd_; }
 	inline double egzaminas() const { return egzaminas_; }
 
+	bool operator<(const Studentas& other) const {
+		if (pavarde_ != other.pavarde_)
+			return pavarde_ < other.pavarde_;
+		return vardas_ < other.vardas_;
+	}
+
+	bool operator==(const Studentas& other) const {
+		return vardas_ == other.vardas_ && pavarde_ == other.pavarde_ && egzaminas_ == other.egzaminas_ && nd_ == other.nd_;
+	}
+
+
 	double galutinisvid() const;
 	double galutinismed() const;
 	double galutinisbalas(bool naudotimediana)const {
