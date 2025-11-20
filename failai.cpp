@@ -31,7 +31,7 @@ void atvaizdvektorius(vector <Studentas> & Grupe) {
         auto rikiavimopradzia = high_resolution_clock::now();
 
         if (prad == 1) sort(Grupe.begin(), Grupe.end(), [](const Studentas& a, const Studentas& b) {return a.vardas() < b.vardas(); });
-        else if (prad == 2) sort(Grupe.begin(), Grupe.end(), [](const Studentas& a, const Studentas& b) {return a.pavarde() < b.pavarde(); });
+        else if (prad == 2) sort(Grupe.begin(), Grupe.end());
         else if (prad == 3) sort(Grupe.begin(), Grupe.end(), [](const Studentas& a, const Studentas& b) {return a.galutinisvid() > b.galutinisvid(); });
 
         auto rikiavimopabaiga = high_resolution_clock::now();
@@ -209,7 +209,7 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         auto rikiavimopradzia = high_resolution_clock::now();
 
         if (prad == 1) Grupe.sort([](const Studentas& a, const Studentas& b) {return a.vardas() < b.vardas(); });
-        else if (prad == 2) Grupe.sort([](const Studentas& a, const Studentas& b) {return a.pavarde() < b.pavarde(); });
+        else if (prad == 2) Grupe.sort();
         else if (prad == 3) Grupe.sort([](const Studentas& a, const Studentas& b) {return a.galutinisvid() > b.galutinisvid(); });
 
         auto rikiavimopabaiga = high_resolution_clock::now();
