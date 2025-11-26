@@ -95,6 +95,24 @@ void atvaizdvektorius(vector <Studentas> & Grupe) {
             cout << "Pirmo studento duomenys per operator <<: " << Grupe[0] << endl;
         }
 
+        cout << "Rule of three demonstracija: " << endl;
+        if (!Grupe.empty()) {
+            Studentas originalas = Grupe[0];
+            Studentas kopija(originalas);
+
+            cout << "Originalus studentas: " << originalas << endl;
+            cout << "Kopijuotas studentas: " << kopija << endl;
+
+            if (!kopija.nd().empty()) {
+                vector <double> naujind(kopija.nd().size(), 1);
+                Studentas pakeistas(kopija.vardas(), kopija.pavarde(), naujind, 1);
+                kopija = pakeistas;
+            }
+            cout << "Po pakeitimu kopijoje:" << endl;
+            cout << "Kopija: " << kopija << endl;
+            cout << "Originalas: " << originalas << endl;
+        }
+
 
         cout << "Pasirinkite norima skaidymo strategija: " << endl;
         cout << "1 - du nauji to paties tipo konteineriai, 2 - naudojamas tik vienas konteineris, 3 - optimizuota, veikianti greičiausiai" << endl;
@@ -270,14 +288,29 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         if (!Grupe.empty()) {
             auto it = Grupe.begin();
             cout << *it << endl;
-
-            Studentas kopijuojamas(*it);
-            Studentas priskiriamas;
-            priskiriamas = *it;
-
-            cout << "Kopijuojamas studentas: " << kopijuojamas << endl;
-            cout << "Priskiriamas studentas: " << priskiriamas << endl;
         }
+
+        cout << "Rule of three demonstracija" << endl;
+
+        if (!Grupe.empty()) {
+            auto it = Grupe.begin();
+
+            Studentas originalas = *it;
+            Studentas kopija(originalas);
+
+            cout << "Originalus studentas: " << originalas << endl;
+            cout << "Kopijuotas studentas: " << kopija << endl;
+
+            if (!kopija.nd().empty()) {
+                vector <double> naujind(kopija.nd().size(), 1);
+                Studentas pakeistas(kopija.vardas(), kopija.pavarde(), naujind, 1);
+                kopija = pakeistas;
+            }
+            cout << "PO pakeitimu kopijoje " << endl;
+            cout << "Kopija: " << kopija << endl;
+            cout << "Originalas: " << originalas << endl;
+        }
+
 
         cout << "Rezultatai sekmingai issaugoti" << endl;
 
