@@ -85,10 +85,6 @@ void atvaizdvektorius(vector <Studentas> & Grupe) {
             else neislaik++;
         }
         kursovidurkis = kursovidurkis / Grupe.size();
-        rezultatai << "Bendras viso kurso studentu vidurkis: " << fixed << setprecision(2) << kursovidurkis << endl;
-        rezultatai << "Teigiama bendra iverti gavo: " << islaik << " studentai." << endl;
-        rezultatai << "Neigiama bendra iverti gavo ir kursa kartos: " << neislaik << " studentai." << endl;
-
 
         rezultatai.close();
 
@@ -263,9 +259,6 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
             else neislaik++;
         }
         kursovidurkis = kursovidurkis / Grupe.size();
-        rezultatai << "Bendras viso kurso studentu vidurkis: " << fixed << setprecision(2) << kursovidurkis << endl;
-        rezultatai << "Teigiama bendra iverti gavo: " << islaik << " studentai." << endl;
-        rezultatai << "Neigiama bendra iverti gavo ir kursa kartos: " << neislaik << " studentai." << endl;
 
 
         rezultatai.close();
@@ -365,4 +358,3 @@ void atvaizdsarasas(list <Studentas>& Grupe) {
         }
     }
 }
-
