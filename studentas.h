@@ -24,36 +24,44 @@ using std::ostream;
 double mediana(const vector<double>&);
 double vidurkis(const vector<double>&);
 
-class Studentas {
-private:
+class Zmogus {
+protected:
 	string vardas_;
 	string pavarde_;
+public:
+	Zmogus() :vardas_(), pavarde_() {}
+	Zmogus(const string& vard, const string& pav) : vardas_(vard), pavarde_(pav) {}
+
+	const string& vardas() const {return vardas_;} 
+	const string& pavarde() const { return pavarde_;}
+
+	double galutinisbalas(bool naudotimediana) const { return 0.0; }
+};
+
+
+class Studentas:public Zmogus {
+private:
 	vector <double> nd_;
 	double egzaminas_;
 
 public:
-	Studentas() : egzaminas_(0) {}
+	Studentas() : Zmogus (), egzaminas_(0) {}
 	explicit Studentas(istream & istu);
 
-	Studentas(const string& vard, const string& pav, const vector <double>& nd, double egz) :vardas_(vard), pavarde_(pav), nd_(nd), egzaminas_(egz) {}
+	Studentas(const string& vard, const string& pav, const vector <double>& nd, double egz) :Zmogus(vard, pav), nd_(nd), egzaminas_(egz) {}
 
 	Studentas(const Studentas& s);
 
 	Studentas& operator=(const Studentas& s);
 
 	~Studentas() {
-		vardas_.clear();
-		pavarde_.clear();
 		nd_.clear();
 		egzaminas_ = 0;
 	}
 
+	const vector<double>& nd() const { return nd_; } 
+	double egzaminas() const { return egzaminas_; }
 
-
-	inline const string & vardas() const { return vardas_; }
-	inline const string & pavarde() const { return pavarde_; }
-	inline const vector <double>& nd() const { return nd_; }
-	inline double egzaminas() const { return egzaminas_; }
 
 	bool operator<(const Studentas& other) const {
 		if (pavarde_ != other.pavarde_)
