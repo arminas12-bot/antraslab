@@ -260,3 +260,20 @@ Kiekvieno iš OPERATOR << arba >> konkretūs kodo pavyzdžiai yra pateikiami že
 <img width="502" height="187" alt="image" src="https://github.com/user-attachments/assets/1a1a16a9-d05e-46e1-9112-37833073f58b" />
 
 IŠVADA: rankinis įvedimas paliktas taip, kaip buvo; nuskaitymas iš failo pakeistas - kiekviena eilutė nuo šiol nuskaitom su operator >> (kintam >> s); sugeneruoti failai vėliau gali būti nuskaitomi tokiu pačiu būdu, t.y. per operator >>; išvedimui į konsolę yra naudojamas operator << (cout << Grupe[0], cout << kopijuojamas ir t.t.); išvedimui į failą metodai palikti tie patys.
+
+
+## V1.5 VERSIJA
+
+Nuo šiol programa atnaujinta dar kartą. 
+Visų pirma buvo sukurta abstrakti klasė Zmogus, įdėta virtuali funkcija (1 pav.), tai padarė Zmogus klasę abstrakčia, vadinasi, kurti naujų objektų nebegalima, taip pat buvo pridėtas virtualus destruktorius(2 pav.).
+
+1 pav. <img width="504" height="40" alt="image" src="https://github.com/user-attachments/assets/de2e3b12-a3e1-431b-9c35-03b9fe71bd49" />
+
+2 pav. <img width="229" height="36" alt="image" src="https://github.com/user-attachments/assets/e18bd639-00b4-439d-a8e4-8188cf5e42c3" />
+
+Antra, klasė Studentas padaryta išvestine iš Zmogus. Studentas perima vardus ir pavardes iš Zmogus. Taip pat papildyta naująja bazinės klases virtualia funkcija (3 pav.). Dėl šios priežasties Studentas yra ne abstrakčia klase.
+
+3 pav. <img width="472" height="59" alt="image" src="https://github.com/user-attachments/assets/724babee-b91e-45d3-875e-921d5c1b1a21" />
+
+Išvada: užduotis atlikta pagal visus reikalavimus, t.y. vietoje klasės Studentas sukurtos dvi: abstrakti klasė, aprašanti žmogų bei iš jos išvestinę klasę - Studentas, taip pat padaryta, kad žmogui skirta klasė yra abstrakti. Na, o visa kita veikimo logika - palikta ta pati, programa veikia taip, kaip veikdavo anksčiau (gali generuoti failus, nuskaityti failus arba dirbti su žmogaus ranka įvedamais (random būdu generuojamais) pažymiais).
+
