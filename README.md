@@ -275,5 +275,9 @@ Antra, klasė Studentas padaryta išvestine iš Zmogus. Studentas perima vardus 
 
 3 pav. <img width="472" height="59" alt="image" src="https://github.com/user-attachments/assets/724babee-b91e-45d3-875e-921d5c1b1a21" />
 
+Žemiau esančioje nuotraukoje pateikiamas įrodymas, kad naujų objektų kūrimas yra negalimas (gaunamas pranešimas apie klaidingą programos vykdymą):
+<img width="513" height="170" alt="image" src="https://github.com/user-attachments/assets/17dfa443-ceb6-4a7a-9831-00bbc6dc9e7c" />
+
+
 Išvada: užduotis atlikta pagal visus reikalavimus, t.y. vietoje klasės Studentas sukurtos dvi: abstrakti klasė, aprašanti žmogų bei iš jos išvestinę klasę - Studentas, taip pat padaryta, kad žmogui skirta klasė yra abstrakti. Na, o visa kita veikimo logika - palikta ta pati, programa veikia taip, kaip veikdavo anksčiau (gali generuoti failus, nuskaityti failus arba dirbti su žmogaus ranka įvedamais (random būdu generuojamais) pažymiais).
 
