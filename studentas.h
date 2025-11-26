@@ -32,10 +32,12 @@ public:
 	Zmogus() :vardas_(), pavarde_() {}
 	Zmogus(const string& vard, const string& pav) : vardas_(vard), pavarde_(pav) {}
 
+	virtual ~Zmogus() = default;
+
 	const string& vardas() const {return vardas_;} 
 	const string& pavarde() const { return pavarde_;}
 
-	double galutinisbalas(bool naudotimediana) const { return 0.0; }
+	virtual double galutinisbalas(bool naudotimediana) const = 0;
 };
 
 
@@ -76,7 +78,7 @@ public:
 
 	double galutinisvid() const;
 	double galutinismed() const;
-	double galutinisbalas(bool naudotimediana)const {
+	virtual double galutinisbalas(bool naudotimediana)const {
 		return naudotimediana ? galutinismed() : galutinisvid();
 	}
 
