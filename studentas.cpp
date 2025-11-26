@@ -18,16 +18,11 @@ double vidurkis(const vector<double> & v) {
 }
 
 
-Studentas::Studentas(istream & istu) : egzaminas_(0) {
+Studentas::Studentas(istream & istu) : Zmogus(), egzaminas_(0) {
 	readStudent(istu);
 }
 
-Studentas::Studentas(const Studentas& s) {
-	vardas_ = s.vardas_;
-	pavarde_ = s.pavarde_;
-	nd_ = s.nd_;
-	egzaminas_ = s.egzaminas_;
-}
+Studentas::Studentas(const Studentas& s) : Zmogus(s.vardas_, s.pavarde_), nd_(s.nd_), egzaminas_(s.egzaminas_) {}
 
 Studentas& Studentas::operator=(const Studentas& s) {
 	if (this != &s) {
@@ -47,8 +42,6 @@ double Studentas::galutinisvid() const {
 }
 
 istream& Studentas::readStudent(istream & istu) {
-	vardas_.clear();
-	pavarde_.clear();
 	nd_.clear();
 	egzaminas_ = 0;
 
