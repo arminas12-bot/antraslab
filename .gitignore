@@ -416,3 +416,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Googletest specifiškai sugeneruoti failai
+*.lib
+googletest-1.17.0/build/
