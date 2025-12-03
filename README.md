@@ -281,3 +281,14 @@ Antra, klasė Studentas padaryta išvestine iš Zmogus. Studentas perima vardus 
 
 Išvada: užduotis atlikta pagal visus reikalavimus, t.y. vietoje klasės Studentas sukurtos dvi: abstrakti klasė, aprašanti žmogų bei iš jos išvestinę klasę - Studentas, taip pat padaryta, kad žmogui skirta klasė yra abstrakti. Na, o visa kita veikimo logika - palikta ta pati, programa veikia taip, kaip veikdavo anksčiau (gali generuoti failus, nuskaityti failus arba dirbti su žmogaus ranka įvedamais (random būdu generuojamais) pažymiais).
 
+## V2.0 VERSIJA
+
+Šioje versijoje buvo:
+
+sukurta dokumentacija panaudojant Doxygen;
+
+realizuoti unit testai;
+
+atliktas dažniausiai naudojamas google testavimas ir catch testavimas. Pridėta nuotraukoje.
+
+<img width="597" height="428" alt="image" src="https://github.com/user-attachments/assets/a6810f96-fa09-422c-92bd-4814021c338c" />
