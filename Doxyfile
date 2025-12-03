@@ -1,0 +1,41 @@
+# Projekto duomenys
+PROJECT_NAME           = "Studentų Valdymo Sistema"
+PROJECT_BRIEF          = "Sistema, skirta studentų duomenims valdyti, skaityti, skaičiuoti ir skaidyti."
+PROJECT_NUMBER         = 1.0
+OUTPUT_DIRECTORY       = docs
+DOXYFILE_ENCODING      = UTF-8
+QUIET                  = YES
+
+# Šaltinio ir įvesties nustatymai
+INPUT                  = .
+FILE_PATTERNS          = *.cpp \
+                         *.h
+RECURSIVE              = YES
+EXCLUDE_PATTERNS       = 
+
+# Nuskaitymo nustatymai
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+JAVADOC_AUTOBRIEF      = YES
+ALPHABETICAL_INDEX     = YES
+
+# HTML išvesties nustatymai
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_DYNAMIC_MENUS     = YES
+GENERATE_TREEVIEW      = YES
+
+# Išvesties formatavimas
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = NO
+
+# GRAFIKŲ NUSTATYMAI 
+
+HAVE_DOT               = NO
+CLASS_GRAPH            = NO 
+COLLABORATION_GRAPH    = NO
+UML_LOOK               = NO
