@@ -1,0 +1,155 @@
+\doxysection{Studentas Class Reference}
+\hypertarget{class_studentas}{}\label{class_studentas}\index{Studentas@{Studentas}}
+
+
+\doxylink{class_studentas}{Studentas} klase\+: saugo namu darbu pazymius ir egzamino pazymi.  
+
+
+
+
+{\ttfamily \#include $<$studentas.\+h$>$}
+
+Inheritance diagram for Studentas\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_studentas}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_studentas_a13cbd18829296957bb8ca7a20d0c3140}\label{class_studentas_a13cbd18829296957bb8ca7a20d0c3140} 
+{\bfseries Studentas} (istream \&istu)
+\item 
+\Hypertarget{class_studentas_a2bb9cfe77e7d3c72d6e56df4644717e5}\label{class_studentas_a2bb9cfe77e7d3c72d6e56df4644717e5} 
+{\bfseries Studentas} (const string \&vard, const string \&pav, const vector$<$ double $>$ \&nd, double egz)
+\item 
+\Hypertarget{class_studentas_a919251ec5bbb012f622a9bedfd804a21}\label{class_studentas_a919251ec5bbb012f622a9bedfd804a21} 
+{\bfseries Studentas} (const \mbox{\hyperlink{class_studentas}{Studentas}} \&s)
+\item 
+\Hypertarget{class_studentas_aa58bf289c42552bffd4901ddad4c5f1c}\label{class_studentas_aa58bf289c42552bffd4901ddad4c5f1c} 
+\mbox{\hyperlink{class_studentas}{Studentas}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_studentas}{Studentas}} \&s)
+\item 
+\Hypertarget{class_studentas_aacbfad60f6b3ffaece697d57704c23b6}\label{class_studentas_aacbfad60f6b3ffaece697d57704c23b6} 
+const vector$<$ double $>$ \& {\bfseries nd} () const
+\item 
+\Hypertarget{class_studentas_a64d09da390e433eb68d7ca43e414d570}\label{class_studentas_a64d09da390e433eb68d7ca43e414d570} 
+double {\bfseries egzaminas} () const
+\item 
+\Hypertarget{class_studentas_a5fdd664ecf8537e01dedf6296d32fb76}\label{class_studentas_a5fdd664ecf8537e01dedf6296d32fb76} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{class_studentas}{Studentas}} \&other) const
+\begin{DoxyCompactList}\small\item\em Palyginimo operatorius pagal pavarde ir varda. \end{DoxyCompactList}\item 
+\Hypertarget{class_studentas_aa5d9f15dc7728f3a9189e2178c7d5307}\label{class_studentas_aa5d9f15dc7728f3a9189e2178c7d5307} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_studentas}{Studentas}} \&other) const
+\begin{DoxyCompactList}\small\item\em Lygybes operatorius (vardas, pavarde, egzaminas, nd). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_studentas_a5e7412d3339b0b22cdf0c898f1f90357}{galutinisvid}} () const
+\begin{DoxyCompactList}\small\item\em Apskaiciuojamas galutinis pagal vidurki. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_studentas_a2ea878c383ad30195f41ba58d74436c1}{galutinismed}} () const
+\begin{DoxyCompactList}\small\item\em Apskaiciuojamas galutinis pagal mediana. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_studentas_a42241cd1a6367a5f9e3c6933bf9a7ed5}{galutinisbalas}} (bool naudotimediana) const
+\begin{DoxyCompactList}\small\item\em Grazina galutinio balo reiksme. \end{DoxyCompactList}\item 
+istream \& \mbox{\hyperlink{class_studentas_a35dc9466153153095ad358d44f3a0387}{read\+Student}} (istream \&)
+\begin{DoxyCompactList}\small\item\em Skaito studento duomenis is input stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_zmogus}{Zmogus}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Zmogus} (const string \&vard, const string \&pav)
+\item 
+const string \& {\bfseries vardas} () const
+\item 
+const string \& {\bfseries pavarde} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_studentas_adc51fc3cf314a8f8ec6b514156a65ae1}\label{class_studentas_adc51fc3cf314a8f8ec6b514156a65ae1} 
+istream \& {\bfseries operator$>$$>$} (istream \&is, \mbox{\hyperlink{class_studentas}{Studentas}} \&s)
+\item 
+\Hypertarget{class_studentas_aa1b71bec62728d9606e1d7cc3e5787bf}\label{class_studentas_aa1b71bec62728d9606e1d7cc3e5787bf} 
+ostream \& {\bfseries operator$<$$<$} (ostream \&os, const \mbox{\hyperlink{class_studentas}{Studentas}} \&s)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_zmogus}{Zmogus}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries vardas\+\_\+}
+\item 
+string {\bfseries pavarde\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_studentas}{Studentas} klase\+: saugo namu darbu pazymius ir egzamino pazymi. 
+
+\label{doc-func-members}
+\Hypertarget{class_studentas_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_studentas_a42241cd1a6367a5f9e3c6933bf9a7ed5}\index{Studentas@{Studentas}!galutinisbalas@{galutinisbalas}}
+\index{galutinisbalas@{galutinisbalas}!Studentas@{Studentas}}
+\doxysubsubsection{\texorpdfstring{galutinisbalas()}{galutinisbalas()}}
+{\footnotesize\ttfamily \label{class_studentas_a42241cd1a6367a5f9e3c6933bf9a7ed5} 
+virtual double Studentas\+::galutinisbalas (\begin{DoxyParamCaption}\item[{bool}]{naudotimediana}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Grazina galutinio balo reiksme. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em naudotimediana} & Jei true -\/ naudoti mediana, kitu atveju -\/ vidurki. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_zmogus_a98457323b6e1fbb71b5446d6148e115b}{Zmogus}}.
+
+\Hypertarget{class_studentas_a2ea878c383ad30195f41ba58d74436c1}\index{Studentas@{Studentas}!galutinismed@{galutinismed}}
+\index{galutinismed@{galutinismed}!Studentas@{Studentas}}
+\doxysubsubsection{\texorpdfstring{galutinismed()}{galutinismed()}}
+{\footnotesize\ttfamily \label{class_studentas_a2ea878c383ad30195f41ba58d74436c1} 
+double Studentas\+::galutinismed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Apskaiciuojamas galutinis pagal mediana. 
+
+\begin{DoxyReturn}{Returns}
+Galutinis (double). 
+\end{DoxyReturn}
+\Hypertarget{class_studentas_a5e7412d3339b0b22cdf0c898f1f90357}\index{Studentas@{Studentas}!galutinisvid@{galutinisvid}}
+\index{galutinisvid@{galutinisvid}!Studentas@{Studentas}}
+\doxysubsubsection{\texorpdfstring{galutinisvid()}{galutinisvid()}}
+{\footnotesize\ttfamily \label{class_studentas_a5e7412d3339b0b22cdf0c898f1f90357} 
+double Studentas\+::galutinisvid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Apskaiciuojamas galutinis pagal vidurki. 
+
+\begin{DoxyReturn}{Returns}
+Galutinis (double). 
+\end{DoxyReturn}
+\Hypertarget{class_studentas_a35dc9466153153095ad358d44f3a0387}\index{Studentas@{Studentas}!readStudent@{readStudent}}
+\index{readStudent@{readStudent}!Studentas@{Studentas}}
+\doxysubsubsection{\texorpdfstring{readStudent()}{readStudent()}}
+{\footnotesize\ttfamily \label{class_studentas_a35dc9466153153095ad358d44f3a0387} 
+istream \& Studentas\+::read\+Student (\begin{DoxyParamCaption}\item[{istream \&}]{istu}{}\end{DoxyParamCaption})}
+
+
+
+Skaito studento duomenis is input stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em istu} & Input stream (pavyzdzui is failo ar cin). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Atgal grazina stream. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+studentas.\+h\item 
+studentas.\+cpp\end{DoxyCompactItemize}
