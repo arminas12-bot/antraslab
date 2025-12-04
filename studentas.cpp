@@ -84,3 +84,6 @@ ostream& operator <<(ostream& os, const Studentas& s) {
 bool lyginam(const Studentas& a, const Studentas& b) { return a.vardas() < b.vardas(); }
 bool lyginampavardes(const Studentas& a, const Studentas& b) { return a.pavarde() < b.pavarde(); }
 bool lyginamegzam(const Studentas& a, const Studentas& b) { return a.egzaminas() < b.egzaminas(); }
+bool Studentas::operator<(const Studentas& kitas) const {
+	return this->egzaminas() < kitas.egzaminas();
+}
