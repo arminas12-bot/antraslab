@@ -21,9 +21,22 @@ using std::move;
 using std::isdigit;
 using std::ostream;
 
+/**
+ * @brief Apskaičiuoja mediana vektoriui.
+ * @param v Vektorius pazymiu.
+ * @return Medianos reiksme (double). Jei vektorius tuscias grazina 0.0.
+ */
 double mediana(const vector<double>&);
+/**
+ * @brief Apskaičiuoja vidurki vektoriui.
+ * @param v Vektorius pazymiu.
+ * @return Vidurkis (double). Jei vektorius tuscias grazina 0.0.
+ */
 double vidurkis(const vector<double>&);
 
+/**
+ * @brief Bazine klase, sauganti zmogaus varda ir pavarde.
+ */
 class Zmogus {
 protected:
 	string vardas_;
@@ -37,14 +50,20 @@ public:
 	const string& vardas() const {return vardas_;} 
 	const string& pavarde() const { return pavarde_;}
 
+	/**
+	 * @brief Grazina galutinio balo reiksme.
+	 * @param naudotimediana Jei true - naudoti mediana, kitu atveju - vidurki.
+	 */
 	virtual double galutinisbalas(bool naudotimediana) const = 0;
 };
 
-
+/**
+ * @brief Studentas klase: saugo namu darbu pazymius ir egzamino pazymi.
+ */
 class Studentas:public Zmogus {
 private:
-	vector <double> nd_;
-	double egzaminas_;
+	vector <double> nd_; ///< Namu darbu pazymiai
+	double egzaminas_; ///< Egzamino pazymys
 
 public:
 	Studentas() : Zmogus (), egzaminas_(0) {}
@@ -65,23 +84,41 @@ public:
 	double egzaminas() const { return egzaminas_; }
 
 
+	/**
+	 * @brief Palyginimo operatorius pagal pavarde ir varda.
+	 */
 	bool operator<(const Studentas& other) const {
 		if (pavarde_ != other.pavarde_)
 			return pavarde_ < other.pavarde_;
 		return vardas_ < other.vardas_;
 	}
 
+	/**
+	 * @brief Lygybes operatorius (vardas, pavarde, egzaminas, nd).
+	 */
 	bool operator==(const Studentas& other) const {
 		return vardas_ == other.vardas_ && pavarde_ == other.pavarde_ && egzaminas_ == other.egzaminas_ && nd_ == other.nd_;
 	}
 
-
+	/**
+	* @brief Apskaiciuojamas galutinis pagal vidurki.
+	* @return Galutinis (double).
+	*/
 	double galutinisvid() const;
+	/**
+	* @brief Apskaiciuojamas galutinis pagal mediana.
+	* @return Galutinis (double).
+	*/
 	double galutinismed() const;
 	virtual double galutinisbalas(bool naudotimediana)const {
 		return naudotimediana ? galutinismed() : galutinisvid();
 	}
 
+	/**
+	* @brief Skaito studento duomenis is input stream.
+	* @param istu Input stream (pavyzdzui is failo ar cin).
+	* @return Atgal grazina stream.
+	*/
 	istream& readStudent(istream&);
 
 	friend istream& operator>>(istream& is, Studentas& s);
@@ -89,6 +126,7 @@ public:
 
 };
 
+/* Pagalbines palyginimo funkcijos */
 bool lyginam(const Studentas& a, const Studentas& b);
 bool lyginampavardes(const Studentas& a, const Studentas& b);
 bool lyginamegzam(const Studentas& a, const Studentas& b);
