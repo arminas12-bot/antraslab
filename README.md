@@ -285,10 +285,38 @@ Išvada: užduotis atlikta pagal visus reikalavimus, t.y. vietoje klasės Studen
 
 Šioje versijoje buvo:
 
-sukurta dokumentacija panaudojant Doxygen;
+1. sukurta dokumentacija panaudojant Doxygen;
 
-realizuoti unit testai;
+2. realizuoti unit testai.
 
-atliktas dažniausiai naudojamas google testavimas. Pridėta nuotraukoje.
+### PROGRAMOS DIEGIMO INSTRUKCIJA
+a) Būtinai pasitikrinkite, ar įrenginyje yra idiegtas kompiliatorius su cmake;
+
+b) Atsisiųskite visus reikalingus .cpp ir .h failus, taip pat nepamirškite ir labai svarbaus failo: CMakeLists.txt;
+
+c)Susikurkite projektui naują vietą, pvz: C:\Projects*Projekto pavadinimas* ir sukelkite į projekto aplanką visus atsisiųstus failus;
+
+d) Terminale rašykite šia eilės tvarka: pirmiausia nueikite į pagrindinį projekto katalogą: cd C:\*, tuomet mkdir build, įvykdę šiuos du etapus, terminale pereikiti į build katalogą: cd build, tada konfigūruokite: cmake .. ir, sėkmės atveju, kompiliuokite: cmake --build .
+
+e) Viskas! studentu_valdymas.exe sukurtas sėkmingai, galite atsidaryti bei patikrinti programos veiksnumą! Atsidaryti galima rankiniu būdu arba terminale įvedus: Release\studentu_valdymas.exe
+
+
+### TEST INSTRUKCIJA
+<img width="592" height="717" alt="image" src="https://github.com/user-attachments/assets/e1ebf92f-3b38-4819-9a8c-5649371fc863" />
+
+a) Norėdami paleisti testavimą pirmiausia consolėje turite atsirasti tam pačiame projekto aplanke: cd C:\* ;
+
+b)Tuomet įveskite komandą, kuri sukompiliuos visą kodą: cl /EHsc /MDd /std:c++17 /I googletest-1.17.0\googletest\include studentas_test.cpp studentas.cpp mylib.cpp skaidymas.cpp failai.cpp /link /Fe:studentas_test.exe /LIBPATH:googletest-1.17.0\build\lib\Debug gtest.lib gtest_main.lib oldnames.lib
+
+c) Paskutinis žingsnis - paleiskite testus: studentas_test.exe . Gautų rezultatų nuotrauka yra pateikiama žemiau:
 
 <img width="597" height="428" alt="image" src="https://github.com/user-attachments/assets/a6810f96-fa09-422c-92bd-4814021c338c" />
+
+
+### DOXYGEN PALEIDIMO INSTRUKCIJA
+a) Atsisiųskite pateiktą aplankalą Doxygen_dokumentacija ir įkelkite į projekto aplanką;
+
+b) Tuomet konsolėje nueikite į aplanką, kuriame yra projekto dokumentacija (Doxygen_dokumentacija): cd C:\*\Doxygen_dokumentacija ;
+
+c) Tada veskite: start html\index.html ir būsite nukreiptas į dokumentacijos puslapį sėkmingai!
+<img width="419" height="737" alt="image" src="https://github.com/user-attachments/assets/510191f2-be2f-47cd-9eae-7c8bf7f42d2f" />
