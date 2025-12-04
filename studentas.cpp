@@ -1,6 +1,6 @@
 #include "studentas.h"
 
-
+/* mediana ir vidurkis aprasyti header faile */
 double mediana(const vector<double>& v) {
 	if (v.empty()) return 0.0;
 	vector <double> kint1 = v;

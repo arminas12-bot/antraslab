@@ -2,9 +2,7 @@
 #include "studentas.h" 
 #include "mylib.h"     
 
-
 using std::vector;
-
 
 TEST(PagalbinesFunkcijosTest, Vidurkis) {
     vector<double> pazymiai = { 10, 8, 9, 7 };
@@ -25,18 +23,19 @@ TEST(PagalbinesFunkcijosTest, MedianaNelyginis) {
 }
 
 
-
 TEST(StudentasTest, GalutinisVidurkis) {
     vector<double> nd = { 10, 10, 10 }; 
     double egzaminas = 5.0;
     Studentas s("Vardas", "Pavarde", nd, egzaminas);
-    ASSERT_NEAR(s.galutinisvid(), 7.0, 0.001);
+    ASSERT_NEAR(s.galutinisvid(), 7.0, 0.001); //su leistina paklaid1 0.001
 }
 
 TEST(StudentasTest, Palyginimas) {
-    Studentas s1("Ona", "Antanaite", {}, 10);
-    Studentas s2("Jonas", "Jonauskas", {}, 8);
-    Studentas s3("Petras", "Antanaite", {}, 5); 
+    Studentas s1("Migle", "Miglaite", {}, 10);
+    
+    Studentas s2("Jonas", "Jonaitis", {}, 8);
+    
+    Studentas s3("Petras", "Petraitis", {}, 5); 
 
 
     ASSERT_TRUE(s1 < s2);

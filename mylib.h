@@ -48,7 +48,20 @@ using std::stable_partition;
 
 
 
-
+/**
+ * @brief Suranda mediana skaiciu vektoriui (int).
+ * @param paz Vektorius pazymiu (int).
+ * @return Medianos reiksme (double). Jei tuscias - 0.0.
+ */
 double ieskommediana(const vector <int> & paz);
+/**
+ * @brief Sugeneruoja kelis failus su atsitiktiniais studentu duomenimis.
+ *        Failai: 1000stud.txt, 10000stud.txt, 100000stud.txt, ...
+ */
 void generuojafailus();
+/**
+ * @brief Sugeneruoja vieno dydzio faila su studentu ir pazymiais.
+ * @param genfail Failo pavadinimas.
+ * @param iraskiekis Kiek irasu sugeneruoti.
+ */
 void generuotifaila(const string & genfail, int iraskiekis);
